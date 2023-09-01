@@ -15,21 +15,6 @@ dist-ssr
 
 # 忽略编译输出
 build
-out
- 
-# 忽略配置文件
-.env
- 
-# 忽略临时文件
-*.tmp
- 
-# 忽略图片和其他静态资源
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.svg
-*.ico
  
 # 忽略IDE和编辑器配置
 .vscode/*
