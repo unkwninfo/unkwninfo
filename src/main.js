@@ -3,7 +3,7 @@
  * @todo router render
  */
 
-import Nav from "./nav.js";
+import Nav from "./nav";
 
 const style = document.createElement("style");
 style.innerHTML = `
