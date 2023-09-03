@@ -3,6 +3,8 @@
  * @todo css
  */
 
+import "./nav.css";
+
 export default class Nav {
   /**
    * @param {Object[]} items
@@ -10,13 +12,13 @@ export default class Nav {
    * @param {string} items[].url
    */
   constructor(items) {
+    this.root = document.createElement("div");
     this.items = items;
   }
-  html() {
-    let root = document.createElement("div");
+  init() {
+    this.root.classList.add("nav");
     let temp = `<ul>${this.items.reduce(cb, "")}</ul>`;
-    root.innerHTML = temp;
-    return root;
+    this.root.innerHTML = temp;
   }
 }
 

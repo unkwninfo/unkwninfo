@@ -1,0 +1,16 @@
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100vw;
+  height: 100vh;
+}
+.bg {
+  background-image: url(https://s1.ax1x.com/2020/04/27/JffXWR.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #2333;
+}
