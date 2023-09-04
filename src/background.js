@@ -1,6 +1,6 @@
 /**
  * @author unkwninfo
- * @todo bug canvas resize
+ * @todo canvas
  */
 
 import "./background.css";
@@ -22,6 +22,7 @@ export default class Background {
     this.ctx = this.canvas.getContext("2d");
     this.root.append(this.canvas);
     this.config = config;
+    this.animationId = null;
   }
   init() {
     this.root.classList.add("bg");
@@ -35,6 +36,7 @@ export default class Background {
         r: this.config.radius,
       });
     }
+    window.cancelAnimationFrame(this.animationId);
     window.requestAnimationFrame(this.draw.bind(this));
   }
   draw() {
@@ -45,13 +47,13 @@ export default class Background {
       this.ctx.fillStyle = "#fff";
       this.ctx.fill();
       if (point.y < this.canvas.height) {
-        point.x += Math.random() < 0.5 ? -1 : 1;
+        // point.x += Math.random() < 0.5 ? -1 : 1;
         point.y++;
       } else {
         point.x = Math.floor(Math.random() * (this.canvas.width + 1));
         point.y = 0;
       }
     });
-    window.requestAnimationFrame(this.draw.bind(this));
+    this.animationId = window.requestAnimationFrame(this.draw.bind(this));
   }
 }
