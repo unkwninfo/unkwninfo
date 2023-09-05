@@ -6,6 +6,7 @@
 import "./main.css";
 import Nav from "./nav";
 import Background from "./background";
+import Paper from "./paper";
 
 const nav = new Nav([
   { name: "home", url: "#home" },
@@ -14,11 +15,13 @@ const nav = new Nav([
 ]);
 
 const bg = new Background();
+const paper = new Paper();
 
-document.body.append(nav.root, bg.root);
+document.body.append(nav.root, bg.root, paper.root);
 window.addEventListener("load", () => {
   nav.init();
   bg.init();
+  paper.init();
 });
 window.addEventListener("resize", () => {
   bg.init();
