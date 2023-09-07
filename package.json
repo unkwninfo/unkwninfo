@@ -14,7 +14,14 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "markdown-it": "^13.0.1",
+    "@bytemd/plugin-breaks": "^1.21.0",
+    "@bytemd/plugin-frontmatter": "^1.21.0",
+    "@bytemd/plugin-gemoji": "^1.21.0",
+    "@bytemd/plugin-gfm": "^1.21.0",
+    "@bytemd/plugin-highlight": "^1.21.0",
+    "@bytemd/plugin-math": "^1.21.0",
+    "@bytemd/plugin-mermaid": "^1.21.0",
+    "bytemd": "^1.21.0",
     "postcss-nesting": "^12.0.1"
   }
 }
