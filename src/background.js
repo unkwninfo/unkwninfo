@@ -38,6 +38,7 @@ export default class Background {
     }
     window.cancelAnimationFrame(this.animationId);
     window.requestAnimationFrame(this.draw.bind(this));
+    window.addEventListener("resize", this.init.bind(this), false);
   }
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
