@@ -5,21 +5,23 @@
 
 import "./nav.css";
 
-export default class Nav {
-  /**
-   * @param {Object[]} items
-   * @param {string} items[].name
-   * @param {string} items[].url
-   */
-  constructor(items) {
-    this.root = document.createElement("div");
-    this.items = items;
-  }
-  init() {
-    this.root.classList.add("nav");
-    let temp = `<ul>${this.items.reduce(cb, "")}</ul>`;
-    this.root.innerHTML = temp;
-  }
+/**
+ * @param {Object[]} items
+ * @param {string} items[].name
+ * @param {string} items[].url
+ */
+export default function Nav() {
+  const root = document.createElement("div");
+  root.classList.add("nav");
+  // root.innerHTML = `<ul>${items.reduce(cb, "")}</ul>`;
+  return new Proxy(root, {
+    set: (target, property, value) => {
+      console.log(`正在设置属性：${property}，新值为：${value}`);
+      target[property] = value;
+      return true;
+    },
+  });
+  // return root;
 }
 
 function cb(previousValue, currentValue, currentIndex, array) {
