@@ -3,16 +3,14 @@
  * @todo css
  */
 
-import "./nav.css";
+import "./list.css";
 
 /**
  * @param {Object[]} items
- * @param {string} items[].name
- * @param {string} items[].url
  */
-export default function Nav() {
+export default function List() {
   const root = document.createElement("div");
-  root.classList.add("nav");
+  root.classList.add("list");
   root.setItems = (items) => {
     root.innerHTML = `<ul>${items.reduce(cb, "")}</ul>`;
   };
@@ -22,5 +20,5 @@ export default function Nav() {
 function cb(previousValue, currentValue, currentIndex, array) {
   // console.log(previousValue);
   // console.log(currentValue);
-  return `${previousValue}<li><a href="${currentValue.url}">${currentValue.name}</a></li>`;
+  return `${previousValue}<li>${currentValue}</li>`;
 }

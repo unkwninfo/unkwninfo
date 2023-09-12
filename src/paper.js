@@ -16,17 +16,15 @@ import "./paper.css";
 // import "highlight.js/styles/default.css";
 // import "katex/dist/katex.css";
 
-export default class Paper {
-  constructor() {
-    this.root = document.createElement("div");
-  }
-  init() {
-    this.root.classList.add("paper");
-    fetch("/test.md")
+export default function Paper() {
+  const root = document.createElement("div");
+  root.classList.add("paper");
+  root.setContent = (path) => {
+    fetch(path)
       .then((response) => response.text())
       .then((text) => {
         new Viewer({
-          target: this.root,
+          target: root,
           props: {
             value: text,
             plugins: [breaks(), frontmatter(), gemoji(), gfm(), highlight(), math(), mermaid()],
@@ -34,5 +32,6 @@ export default class Paper {
         });
       })
       .catch((err) => console.log("Request Failed", err));
-  }
+  };
+  return root;
 }

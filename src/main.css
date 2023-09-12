@@ -5,13 +5,13 @@ body {
     PingFang SC, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif;
 }
 
-.top {
+.header {
   position: fixed;
   top: 0;
   width: 100vw;
   height: 50px;
 }
-.bottom {
+.main {
   position: fixed;
   top: 50px;
   width: 100vw;

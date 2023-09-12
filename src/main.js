@@ -3,10 +3,11 @@
  * @todo layout
  */
 
-// import Router from "./router";
+import Router from "./router";
 // import Background from "./background";
 import Nav from "./nav";
-// import Paper from "./paper";
+import List from "./list";
+import Paper from "./paper";
 
 import "./main.css";
 
@@ -23,51 +24,35 @@ function render(Component, container = null) {
   }
   container.innerHTML = "";
   const root = Component();
-  container.append(root[["Target"]]);
+  container.append(root);
   return root;
 }
 
 // layout
 const body = document.body;
-const top = document.createElement("div");
-const bottom = document.createElement("div");
-top.classList.add("top");
-bottom.classList.add("bottom");
-body.append(top, bottom);
+const header = document.createElement("div");
+const main = document.createElement("div");
+header.classList.add("header");
+main.classList.add("main");
+body.append(header, main);
 
-// const router = new Router();
-// router.init();
-// router.add("", () => {
-//   router.navigate("home");
-// });
-// router.add("home", () => {
-//   bottom.innerHTML = `<p class="heading">Less to More</p><p class="heading">home</p>`;
-// });
-// router.add("archive", () => {
-//   bottom.innerHTML = `<p class="heading">Less to More</p><p class="heading">archive</p>`;
-// });
-// router.add("about", () => {
-//   bottom.innerHTML = "";
-//   const paper = new Paper();
-//   bottom.append(paper.root);
-//   paper.init();
-// });
-
-// const bg = new Background();
-// body.append(bg.root);
-// bg.init();
-
-// const nav = new Nav([
-//   { name: "home", url: "#home" },
-//   { name: "archive", url: "#archive" },
-//   { name: "about", url: "#about" },
-// ]);
-// top.append(nav.root);
-// nav.init();
-let tt = render(Nav, top);
-tt.items = [
+render(Nav, header).setItems([
   { name: "home", url: "#home" },
-  { name: "archive", url: "#archive" },
+  { name: "archives", url: "#archives" },
   { name: "about", url: "#about" },
-];
-console.dir(tt);
+]);
+
+const router = new Router();
+router.init();
+router.add("", () => {
+  router.navigate("home");
+});
+router.add("home", () => {
+  main.innerHTML = `<p class="heading">Less to More</p><p class="heading">home</p>`;
+});
+router.add("archives", () => {
+  render(List, main).setItems([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+router.add("about", () => {
+  render(Paper, main).setContent("/md/about.md");
+});
