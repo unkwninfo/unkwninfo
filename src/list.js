@@ -13,6 +13,7 @@ export default function List() {
   root.classList.add("list");
   root.setItems = (items) => {
     root.innerHTML = `<ul>${items.reduce(cb, "")}</ul>`;
+    return root;
   };
   return root;
 }
@@ -20,5 +21,5 @@ export default function List() {
 function cb(previousValue, currentValue, currentIndex, array) {
   // console.log(previousValue);
   // console.log(currentValue);
-  return `${previousValue}<li>${currentValue}</li>`;
+  return `${previousValue}<li>${currentValue.outerHTML}</li>`;
 }

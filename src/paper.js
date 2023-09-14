@@ -32,6 +32,7 @@ export default function Paper() {
         });
       })
       .catch((err) => console.log("Request Failed", err));
+    return root;
   };
   return root;
 }

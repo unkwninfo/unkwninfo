@@ -1,0 +1,10 @@
+.card {
+  height: 20rem;
+  overflow: hidden;
+  .card-title {
+    font-size: 1.25rem;
+    a {
+      text-decoration: none;
+    }
+  }
+}

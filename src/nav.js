@@ -15,6 +15,7 @@ export default function Nav() {
   root.classList.add("nav");
   root.setItems = (items) => {
     root.innerHTML = `<ul>${items.reduce(cb, "")}</ul>`;
+    return root;
   };
   return root;
 }
