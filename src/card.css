@@ -1,5 +1,5 @@
 .card {
-  height: 20rem;
+  min-height: 10rem;
   overflow: hidden;
   .card-title {
     font-size: 1.25rem;

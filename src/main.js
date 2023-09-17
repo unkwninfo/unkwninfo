@@ -35,10 +35,17 @@ router.add("home", () => {
   main.innerHTML = `<p class="heading">Less to More</p><p class="heading">home</p>`;
 });
 router.add("archives", () => {
-  rss2Cards("/rss.xml");
+  // rss2Cards("/zhihu.rss.xml");
+  // rss2Cards("/douban.rss.xml");
+  rss2Cards("/shuge.rss.xml");
 });
 router.add("about", () => {
   render(Paper, main).setContent("/md/about.md");
+});
+router.add("paper", () => {
+  render(() => {
+    return document.createElement("div");
+  }, main);
 });
 
 function rss2Cards(path) {
@@ -47,15 +54,12 @@ function rss2Cards(path) {
     .then((response) => response.text())
     .then((text) => {
       const rss = new DOMParser().parseFromString(text, "text/xml");
+      console.log(rss);
       for (const item of rss.querySelectorAll("item")) {
         const content = `<p class="card-title"><a href="${item.querySelector("link").textContent}">${
           item.querySelector("title").textContent
-        }</a></p>
-        <p>${item.querySelector("creator").textContent}</p>
-        <p>${item.querySelector("pubDate").textContent}</p>
-        <p>${item.querySelector("guid").textContent}</p><hr>
+        }</a></p><hr>
         <div>${item.querySelector("description").textContent}</div>`;
-        console.log(content);
         cards.push(Card().setContent(content));
       }
       render(List, main).setItems(cards);
